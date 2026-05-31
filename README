@@ -1,0 +1,5 @@
+My first version of vector implemntation
+
+have implemented some vector features (not all of them like move semantics etc)
+
+learned how to create such data structures, works with memory, deep copy, push_back resize etc 
