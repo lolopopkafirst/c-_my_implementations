@@ -77,4 +77,11 @@ int main(){
         std::cout << i << " ";
     }
     std::cout << "\n";
+
+    b = {};
+    b.push_back(2);
+    std::cout<< "b: " << &b << " " << b.size() << " " << b.begin() << " " << b.end() << " " << b.capacity() << "\n";
+    a = std::move(b);
+    std::cout<< "a: " << &a << " " << a.size() << " " << a.begin() << " " << a.end() << " " << a.capacity() << "\n";
+    std::cout<< "b: " << &b << " " << b.size() << " " << b.begin() << " " << b.end() << " " << b.capacity() << "\n";
 }

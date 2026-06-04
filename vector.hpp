@@ -18,6 +18,8 @@ class Vector{
         T& operator[](size_t index);
         const T& operator[](size_t index) const;
 
+        Vector<T>& operator=(Vector<T>&& other);
+
         size_t size() const;
         size_t capacity() const;
 
@@ -76,6 +78,19 @@ const T& Vector<T>::operator[](size_t index) const{
         return data_[index];
     }
     else throw std::out_of_range("out of range");
+}
+
+template<typename T>
+Vector<T>& Vector<T>::operator=(Vector<T>&& other) noexcept{
+    if(this == &other) return *this;
+    delete[] data_;
+    this->size_ = other.size_;
+    this->capacity_ = other.capacity_;
+    data_ = other.data_;
+    other.data_ = nullptr;
+    other.size_ = 0;
+    other.capacity_ = 0;
+    return *this;
 }
 
 template <typename T>
