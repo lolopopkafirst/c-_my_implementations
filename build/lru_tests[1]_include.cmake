@@ -1,5 +1,0 @@
-if(EXISTS "/Users/lolopopkalol/c-_my_implementations/build/lru_tests[1]_tests.cmake")
-  include("/Users/lolopopkalol/c-_my_implementations/build/lru_tests[1]_tests.cmake")
-else()
-  add_test(lru_tests_NOT_BUILT lru_tests_NOT_BUILT)
-endif()
