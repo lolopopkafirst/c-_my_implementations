@@ -7,39 +7,19 @@
 #include <utility>
 #include <string>
 #include <list>
+#include "LRUCache.hpp"
 
 
-struct Entry{
-    int key;
-    int value;
-};
 
-using LruIterator = std::list<Entry>::iterator;
-using ExpIterator = std::map<int, int>::iterator;
 
-struct CacheEntry {
-    LruIterator lru_it;
-    ExpIterator exp_it;
-};
 
-class Cache{
-    private:
 
-        std::list <Entry> lru;
-        std::map<int, int> expire;
-        std::unordered_map<int, CacheEntry> cache; // key and itterators on lru and ttl
-        int size;
-        int curr_time = 0;
-        int ttl; //time to live
-
-    public:
-
-        Cache(int sz, int time) {
+        Cache :: Cache(int sz, int time) {
             size = sz;
             ttl = time;
         }   
 
-        int get(int key){
+        int Cache :: get(int key){
             int now = curr_time++;
             if(cache.count(key) <= 0)   return -1;
             auto lru_iter = cache[key].lru_it;
@@ -53,7 +33,7 @@ class Cache{
             return lru.front().value;
         }
 
-        void removeExpired(int key){   //delete in lru and expire and cache
+        void Cache :: removeExpired(int key){   //delete in lru and expire and cache
             auto lru_iter = cache[key].lru_it;
             auto exp_iter = cache[key].exp_it;
 
@@ -62,7 +42,7 @@ class Cache{
             expire.erase(exp_iter);
         }
 
-        void put(int key , int value){
+        void Cache :: put(int key , int value){
             if(cache.count(key) > 0){ //update in lru and expire 
                 auto lru_iter = cache[key].lru_it;
                 lru_iter->value = value;
@@ -91,7 +71,7 @@ class Cache{
             curr_time++;
         }
 
-        void print(){
+        void Cache :: print(){
             std::cout << "{";
             for(auto& pr : lru){
                 std::cout << "{ " << pr.key << ", " << pr.value << "} ,"; 
@@ -99,7 +79,7 @@ class Cache{
             std::cout << "}" << "\n";
         }
 
-         void print_data(){
+         void Cache :: print_data(){
             std::cout << "{";
             for(auto& pr : cache){
                 std::cout << pr.first << ", ";
@@ -107,10 +87,4 @@ class Cache{
             std::cout << "}" << "\n";
         }
 
-};
 
-
-
-int main(){
-
-}

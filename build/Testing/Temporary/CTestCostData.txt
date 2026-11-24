@@ -1,0 +1,8 @@
+LRUCacheTest.BasicInsertion 5 0.00102009
+LRUCacheTest.MissingKey 7 0.000503506
+LRUCacheTest.PutValue 7 0.000505613
+LRUCacheTest.UpdateValue 7 0.000471048
+LRUCacheTest.ReplaceLastRecentlyUsedValue 6 0.000572653
+LRUCacheTest.UpdatedValueNotReplaced 3 0.0012155
+LRUCacheTest.GetThenReplace 1 0.00347463
+---

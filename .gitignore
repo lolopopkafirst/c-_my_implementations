@@ -1,0 +1,12 @@
+# CMake build directories
+/build/
+cmake-build-*/
+
+# Compiled files
+*.o
+*.a
+*.so
+*.dylib
+
+# macOS
+.DS_Store
